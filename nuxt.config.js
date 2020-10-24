@@ -14,7 +14,14 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/agate.min.css'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -46,6 +53,10 @@ export default {
     '@nuxtjs/markdownit'
   ],
   markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    use: ['markdown-it-highlightjs'],
     injected: true
   },
   /*
