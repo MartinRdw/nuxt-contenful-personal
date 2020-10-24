@@ -4,14 +4,29 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Martin Riedweg | Freelance Software Engineer & Indie Maker',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'keywords', content: 'Martin Riedweg, freelance, laravel, vue' },
+      { name: 'copyright', content: 'Martin Riedweg' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content:
+          "My name is Martin, I'm an engineering student and software developer. I’m also an indie maker that built SAAS products."
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content:
+          "My name is Martin, I'm an engineering student and software developer. I’m also an indie maker that built SAAS products."
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content:
+          'https://martin-riedweg.s3.eu-west-3.amazonaws.com/martin_riedweg_com_c7841d749e.png'
       }
     ],
     link: [
@@ -34,7 +49,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/contentful', '~/plugins/posts'],
+  plugins: ['~/plugins/contentful', '~/plugins/posts', '~/plugins/projects'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -76,6 +91,11 @@ export default {
   },
 
   generate: {
-    routes: ['/laravel-5-7-api-authentification-with-laravel-passport']
+    routes: [
+      '/laravel-5-7-api-authentification-with-laravel-passport',
+      '/amazon-ses-on-laravel',
+      '/laravel-zero-dusk-tracking-twitter-accounts',
+      '/amazon-price-tracker-with-zenaton-puppeteer'
+    ]
   }
 }

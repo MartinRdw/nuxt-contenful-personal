@@ -9,32 +9,29 @@
           {{ post.fields.preview }}
         </p>
         <p class="text-gray-500 text-sm mt-1">
-          {{ post.fields.publishedAt }}
+          {{ moment(post.fields.date).format('MMM D, YYYY') }} ({{
+            post.fields.minutesRead
+          }}
+          min read)
         </p>
       </nuxt-link>
     </div>
-    <!-- <section v-for="post in posts" :key="post.fields.slug">
-      <h2 class="title">
-        <nuxt-link :to="post.fields.slug">{{ post.fields.title }}</nuxt-link>
-      </h2>
-      <p class="description">
-        {{ post.fields.content }}<br />
-        <nuxt-link :to="post.fields.slug" class="more">Read more ⟶</nuxt-link>
-      </p>
-    </section> -->
   </div>
 </template>
 
 <script>
+const moment = require('moment')
+
 export default {
-  components: {},
+  data() {
+    return {
+      moment
+    }
+  },
   computed: {
     posts() {
       return this.$store.state.posts
     }
-  },
-  head: {
-    title: 'Paw Waves, Latest Posts'
   }
 }
 </script>

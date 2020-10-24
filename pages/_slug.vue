@@ -4,7 +4,10 @@
 
     <div class="mt-10">
       <p>
-        {{ post.fields.publishedAt }} ({{ post.fields.minutesRead }} min read)
+        {{ moment(post.fields.date).format('MMM D, YYYY') }} ({{
+          post.fields.minutesRead
+        }}
+        min read)
       </p>
       <article v-html="$md.render(post.fields.content)"></article>
     </div>
@@ -12,10 +15,13 @@
 </template>
 
 <script>
+const moment = require('moment')
+
 export default {
   data() {
     return {
-      slug: this.$route.params.slug
+      slug: this.$route.params.slug,
+      moment
     }
   },
   computed: {
@@ -28,7 +34,9 @@ export default {
   },
   head() {
     return {
-      title: this.post.fields.title
+      title: this.post.fields.title,
+      description: this.post.preview,
+      'og:description': this.post.preview
     }
   }
 }
